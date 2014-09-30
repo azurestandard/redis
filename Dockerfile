@@ -44,6 +44,8 @@ RUN buildDeps='gcc libc6-dev make'; \
     && apt-get purge -y $buildDeps curl \
     && apt-get autoremove -y
 
+RUN mkdir /data && chown redis /data
+WORKDIR /data
 USER redis
 EXPOSE 6379
 CMD [ "redis-server" ]
